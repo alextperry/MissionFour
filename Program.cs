@@ -30,7 +30,7 @@ internal class Program
                 currentPlayer = 'O'; // Player 2 (O) plays on odd turns
             }
 
-            Console.WriteLine("Player" + ((turn % 2) + 1) + ": Choose a number between 1 and 9 to place your " + currentPlayer);
+            Console.WriteLine("Player " + ((turn % 2) + 1) + ": Choose a number between 1 and 9 to place your " + currentPlayer);
             string userInput = Console.ReadLine(); // Read user input as string
             int userNumber;
 
@@ -48,7 +48,7 @@ internal class Program
             if (gameBoard[row, col] == ' ')
             {
                 gameBoard[row, col] = currentPlayer;
-                Console.WriteLine("Player " + ((turn % 2) + 1) + "placed " + currentPlayer + "in postion " + userNumber + ".");
+                Console.WriteLine("Player " + ((turn % 2) + 1) + " placed " + currentPlayer + " in postion " + userNumber + ".");
                 turn++; //Switch players 
 
             }
@@ -63,7 +63,7 @@ internal class Program
 
         } while (turn < 9 && ttt.ReceiveBoard(gameBoard) == "No Winner yet...");
 
-        ttt.ReceiveBoard(gameBoard); 
+        Console.WriteLine(ttt.ReceiveBoard(gameBoard)); 
 
     }   
           
