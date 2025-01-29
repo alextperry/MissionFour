@@ -18,18 +18,19 @@ internal class Program
         };
 
 
-        if (turn % 2 == 0) // Check if turn number is even
-        {
-            currentPlayer = 'X'; // Player 1 (X) plays on even turns
-        }
-        else
-        {
-            currentPlayer = 'O'; // Player 2 (O) plays on odd turns
-        }
-
         do
         {
-            Console.WriteLine("Player" + (turn % 2) + 1 + ": Choose a number between 1 and 9 to place your " + currentPlayer);
+
+            if (turn % 2 == 0) // Check if turn number is even
+            {
+                currentPlayer = 'X'; // Player 1 (X) plays on even turns
+            }
+            else
+            {
+                currentPlayer = 'O'; // Player 2 (O) plays on odd turns
+            }
+
+            Console.WriteLine("Player" + ((turn % 2) + 1) + ": Choose a number between 1 and 9 to place your " + currentPlayer);
             string userInput = Console.ReadLine(); // Read user input as string
             int userNumber;
 
@@ -37,7 +38,7 @@ internal class Program
             if (!int.TryParse(userInput, out userNumber) || userNumber < 1 || userNumber > 9)
             {
                 Console.WriteLine("Invalid input! Please enter a number between 1 and 9.");
-                return;
+                continue;
             }
 
             // Correct position mapping
@@ -60,7 +61,7 @@ internal class Program
             ttt.PrintBoard(gameBoard);
 
 
-        } while (turn < 9 && !ttt.ReceiveBoard)
+        } while (turn < 9 && !ttt.ReceiveBoard());
 
         ttt.ReceiveBoard;
 
