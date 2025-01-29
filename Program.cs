@@ -48,8 +48,8 @@ internal class Program
             if (gameBoard[row, col] == ' ')
             {
                 gameBoard[row, col] = currentPlayer;
-                Console.WriteLine("Player " + (turn % 2) + 1 + "placed " + currentPlayer + "in postion " + userNumber + ".");
-                turn++; //Swith players 
+                Console.WriteLine("Player " + ((turn % 2) + 1) + "placed " + currentPlayer + "in postion " + userNumber + ".");
+                turn++; //Switch players 
 
             }
             else
@@ -61,9 +61,9 @@ internal class Program
             ttt.PrintBoard(gameBoard);
 
 
-        } while (turn < 9 && !ttt.ReceiveBoard());
+        } while (turn < 9 && ttt.ReceiveBoard(gameBoard));
 
-        ttt.ReceiveBoard; 
+        ttt.ReceiveBoard(gameBoard); 
 
     }   
           
