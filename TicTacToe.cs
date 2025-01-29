@@ -19,54 +19,39 @@ namespace MissionFour
 {
     internal class TicTacToe
     {
-        
+
 
         // Method that takes an array of characters and prints out the board of X's and O's
-        public void PrintBoard(char[] board)
+        public void PrintBoard(char[,] board)
         {
-            Console.WriteLine();
-            Console.WriteLine($" {board[0]} | {board[1]} | {board[2]} ");
-            Console.WriteLine("---+---+---");
-            Console.WriteLine($" {board[3]} | {board[4]} | {board[5]} ");
-            Console.WriteLine("---+---+---");
-            Console.WriteLine($" {board[6]} | {board[7]} | {board[8]} ");
-            Console.WriteLine();
-
-            return;
-
+            Console.WriteLine("\n  1 | 2 | 3 " + "         " + board[0, 0] + " | " + board[0, 1] + " | " + board[0, 2]);
+            Console.WriteLine("  ---------         ---------");
+            Console.WriteLine("  4 | 5 | 6 " + "         " + board[1, 0] + " | " + board[1, 1] + " | " + board[1, 2]);
+            Console.WriteLine("  ---------         ---------");
+            Console.WriteLine("  7 | 8 | 9 " + "         " + board[2, 0] + " | " + board[2, 1] + " | " + board[2, 2] + "\n");
         }
 
 
         // Method that takes an array of characters and prints out if there is a winner yet of not...
-        public string ReceiveBoard(char[] board)
+        public string ReceiveBoard(char[,] board)
         {
-            // 2D Array of integers that contains winning patterns
-            int[,] winningCombinations = new int[,]
+            for (int i = 0; i < 3; i++)
             {
-                {0, 1, 2}, {3, 4, 5} , {6, 7, 8} , // Row Combinations
-                {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Column Combinations
-                {0, 4, 8}, {2, 4, 6} // Diagonal Combinations
-            };
-
-            // For loop that iterates through the winning combinations to see if they match the board combination
-            for (int i = 0; i < winningCombinations.GetLength(0); i++)
-            {
-                int a = winningCombinations[i, 0];
-                int b = winningCombinations[i, 1];
-                int c = winningCombinations[i, 2];
-                
-                // if the winning combination is same as board combination, winner is defined
-                if (board[a] == board[b] && board[b] == board[c] && board[a] != ' ')
-                {
-                    return $"Winner is {board[a]}";
-                }
+                if (board[i, 0] != ' ' && board[i, 0] == board[i, 1] && board[i, 1] == board[i, 2])
+                    return "Player " + board[i, 0] + " wins!";
             }
-
-            // otherwise there is not a winner yet...
+            for (int i = 0; i < 3; i++)
+            {
+                if (board[0, i] != ' ' && board[0, i] == board[1, i] && board[1, i] == board[2, i])
+                    return "Player " + board[0, i] + " wins!";
+            }
+            if (board[0, 0] != ' ' && board[0, 0] == board[1, 1] && board[1, 1] == board[2, 2])
+                return "Player " + board[0, 0] + " wins!";
+            if (board[0, 2] != ' ' && board[0, 2] == board[1, 1] && board[1, 1] == board[2, 0])
+                return "Player " + board[0, 2] + " wins!";
             return "No Winner yet...";
         }
 
 
     }
 }
-    
