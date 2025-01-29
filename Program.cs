@@ -61,7 +61,7 @@ internal class Program
             ttt.PrintBoard(gameBoard);
 
 
-        } while (turn < 9 && !ttt.ReceiveBoard());
+        } while (turn < 9 && ttt.ReceiveBoard());
 
         ttt.ReceiveBoard;
 
